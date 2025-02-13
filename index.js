@@ -185,7 +185,6 @@ function sa() {
   return "as";
 }
 sa();
-
 module.exports = {
   sa,
   CemberinCevresi,
@@ -198,5 +197,3 @@ module.exports = {
   siralisayilar,
   tekraredensayilar,
 };
-
-
