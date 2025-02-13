@@ -50,8 +50,8 @@ function KareninAlani(kenaruzunlugu) {
 	4. Hesaplanan çemberin çevresi döndürülecektir.
 */
 
-function CemberinCevresi(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinCevresi(radius) {
+  return (radius*2*pi);
 }
 
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
@@ -64,8 +64,8 @@ function CemberinCevresi(/* kodlar buraya */) {
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function CemberinAlani(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinAlani(radius,pi) {
+  return (Math.pow(radius,2)*pi);
 }
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
@@ -98,28 +98,85 @@ let ucetambolunenler,
   tekraredensayilar;
 
 // 3a çözümü
+const findMin = (arr => {
+  let min = arr[0] ;
+  for (let i = 1; i < arr.length ; i++){
+    min = arr[i] < min ? arr[i] : min;
+  }
+  return min;
+});
 
-/* kodlar buraya */
+const findMax = (arr => {
+  let max = arr[0] ;
+  for (let i = 1; i < arr.length ; i++){
+    max = arr[i] > max ? arr[i] : max;
+  }
+  return max;
+});
+
+enbuyuk = findMax(sayilar);
+enkucuk= findMin(sayilar);
 
 // 3b çözümü:
+const multipleOfThree = (arr => {
+  const mOfThree = [];
+  arr.forEach(number => {
+    if (number % 3 === 0){
+      mOfThree.push(number);
+    }
+  });
+  return mOfThree;
+});
 
-/* kodlar buraya */
+ucetambolunenler = multipleOfThree(sayilar);
 
 // 3c çözümü:
 
-/* kodlar buraya */
+ucebolunenlerintoplami = ucetambolunenler.reduce((toplam,sayi) => toplam += sayi , 0);
 
 // 3d çözümü
 
-/* kodlar buraya */
+const smallFilter = ((arr,limit) =>{
+  const filtered = arr.filter(sayi => sayi < limit);
+  return filtered;
+});
+
+besyuzdenkucuksayilar = smallFilter(sayilar,500);
 
 // 3e çözümü
 
-/* kodlar buraya */
+siralisayilar = [...besyuzdenkucuksayilar].sort((a,b) => a - b);
 
 // 3f çözümü
 
-/* kodlar buraya */
+const findDupe = (arr => {
+  let dupeList = [];
+  for(let s1 of arr){
+    let count = 0;
+    for(let s2 of arr){
+      if (s1 === s2){
+        count++;
+      }
+    }
+    if(count > 1){
+      dupeList.push(`${s1} sayısı ${count} tekrar edilmiştir`);
+    }
+  }
+  return dupeList;
+});
+
+tekraredensayilar = findDupe(sayilar);
+
+//Denemeler
+console.log(CemberinCevresi(5));
+console.log(CemberinAlani(15,pi));
+console.log(enkucuk);
+console.log(enbuyuk);
+console.log(ucetambolunenler);
+console.log(ucebolunenlerintoplami);
+console.log(besyuzdenkucuksayilar);
+console.log(siralisayilar);
+console.log(tekraredensayilar);
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 
@@ -128,6 +185,7 @@ function sa() {
   return "as";
 }
 sa();
+
 module.exports = {
   sa,
   CemberinCevresi,
@@ -140,3 +198,5 @@ module.exports = {
   siralisayilar,
   tekraredensayilar,
 };
+
+
