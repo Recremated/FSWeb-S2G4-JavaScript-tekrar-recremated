@@ -158,8 +158,9 @@ const findDupe = (arr => {
         count++;
       }
     }
-    if(count > 1){
-      dupeList.push(`${s1} sayısı ${count} tekrar edilmiştir`);
+    let str =`${s1} sayısı ${count} kere tekrar edilmiştir`;
+    if(count > 1 && !(dupeList.includes(str))){
+      dupeList.push(str);
     }
   }
   return dupeList;
